@@ -1,14 +1,13 @@
 #
-# $Id: 8021Q.pm,v 1.1 2006/12/22 12:10:09 gomor Exp $
+# $Id: 8021Q.pm 5 2009-05-31 14:51:43Z gomor $
 #
 package Net::Frame::Layer::8021Q;
-use strict;
-use warnings;
+use strict; use warnings;
 
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 
 use Net::Frame::Layer qw(:consts);
-require Exporter;
+use Exporter;
 our @ISA = qw(Net::Frame::Layer Exporter);
 
 our %EXPORT_TAGS = (
@@ -30,12 +29,14 @@ our %EXPORT_TAGS = (
       NF_8021Q_TYPE_STP
       NF_8021Q_TYPE_IPv6
       NF_8021Q_TYPE_WLCCP
+      NF_8021Q_TYPE_MPLS
       NF_8021Q_TYPE_PPPoED
       NF_8021Q_TYPE_PPPoES
       NF_8021Q_TYPE_8021X
       NF_8021Q_TYPE_AoE
       NF_8021Q_TYPE_80211I
       NF_8021Q_TYPE_LLDP
+      NF_8021Q_TYPE_LLTD
       NF_8021Q_TYPE_LOOP
       NF_8021Q_TYPE_VLAN
       NF_8021Q_TYPE_PPPPAP
@@ -63,12 +64,14 @@ use constant NF_8021Q_TYPE_IPX       => 0x8137;
 use constant NF_8021Q_TYPE_STP       => 0x8181;
 use constant NF_8021Q_TYPE_IPv6      => 0x86dd;
 use constant NF_8021Q_TYPE_WLCCP     => 0x872d;
+use constant NF_8021Q_TYPE_MPLS      => 0x8847;
 use constant NF_8021Q_TYPE_PPPoED    => 0x8863;
 use constant NF_8021Q_TYPE_PPPoES    => 0x8864;
 use constant NF_8021Q_TYPE_8021X     => 0x888e;
 use constant NF_8021Q_TYPE_AoE       => 0x88a2;
 use constant NF_8021Q_TYPE_80211I    => 0x88c7;
 use constant NF_8021Q_TYPE_LLDP      => 0x88cc;
+use constant NF_8021Q_TYPE_LLTD      => 0x88d9;
 use constant NF_8021Q_TYPE_LOOP      => 0x9000;
 use constant NF_8021Q_TYPE_VLAN      => 0x9100;
 use constant NF_8021Q_TYPE_PPPPAP    => 0xc023;
@@ -155,12 +158,14 @@ sub encapsulate {
       NF_8021Q_TYPE_STP()     => 'STP',
       NF_8021Q_TYPE_IPv6()    => 'IPv6',
       NF_8021Q_TYPE_WLCCP()   => 'WLCCP',
+      NF_8021Q_TYPE_MPLS()    => 'MPLS',
       NF_8021Q_TYPE_PPPoED()  => 'PPPoED',
       NF_8021Q_TYPE_PPPoES()  => 'PPPoES',
       NF_8021Q_TYPE_8021X()   => '8021X',
       NF_8021Q_TYPE_AoE()     => 'AoE',
       NF_8021Q_TYPE_80211I()  => '80211I',
       NF_8021Q_TYPE_LLDP()    => 'LLDP',
+      NF_8021Q_TYPE_LLTD()    => 'LLTD',
       NF_8021Q_TYPE_LOOP()    => 'LOOP',
       NF_8021Q_TYPE_VLAN()    => 'VLAN',
       NF_8021Q_TYPE_PPPPAP()  => 'PPPPAP',
@@ -334,6 +339,8 @@ Load them: use Net::Frame::Layer::8021Q qw(:consts);
 
 =item B<NF_8021Q_TYPE_WLCCP>
 
+=item B<NF_8021Q_TYPE_MPLS>
+
 =item B<NF_8021Q_TYPE_PPPoED>
 
 =item B<NF_8021Q_TYPE_PPPoES>
@@ -345,6 +352,8 @@ Load them: use Net::Frame::Layer::8021Q qw(:consts);
 =item B<NF_8021Q_TYPE_80211I>
 
 =item B<NF_8021Q_TYPE_LLDP>
+
+=item B<NF_8021Q_TYPE_LLTD>
 
 =item B<NF_8021Q_TYPE_LOOP>
 
@@ -368,7 +377,7 @@ Patrice E<lt>GomoRE<gt> Auffret
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (c) 2006, Patrice E<lt>GomoRE<gt> Auffret
+Copyright (c) 2006-2009, Patrice E<lt>GomoRE<gt> Auffret
 
 You may distribute this module under the terms of the Artistic license.
 See LICENSE.Artistic file in the source distribution archive.
