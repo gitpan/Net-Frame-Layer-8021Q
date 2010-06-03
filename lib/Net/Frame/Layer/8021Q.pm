@@ -1,10 +1,10 @@
 #
-# $Id: 8021Q.pm 5 2009-05-31 14:51:43Z gomor $
+# $Id: 8021Q.pm 7 2010-06-03 12:35:18Z gomor $
 #
 package Net::Frame::Layer::8021Q;
 use strict; use warnings;
 
-our $VERSION = '1.01';
+our $VERSION = '1.02';
 
 use Net::Frame::Layer qw(:consts);
 use Exporter;
@@ -203,7 +203,7 @@ Net::Frame::Layer::8021Q - 802.1Q layer object
 
    use Net::Frame::Layer::8021Q qw(:consts);
 
-   # Build a layer
+   # Build a layer
    my $layer = Net::Frame::Layer::8021Q->new(
       priority => 0,
       cfi      => 0,
@@ -377,7 +377,7 @@ Patrice E<lt>GomoRE<gt> Auffret
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (c) 2006-2009, Patrice E<lt>GomoRE<gt> Auffret
+Copyright (c) 2006-2010, Patrice E<lt>GomoRE<gt> Auffret
 
 You may distribute this module under the terms of the Artistic license.
 See LICENSE.Artistic file in the source distribution archive.
